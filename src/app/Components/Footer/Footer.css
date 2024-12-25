@@ -1,0 +1,147 @@
+/* Root Color Variables for Light and Dark Mode */
+:root {
+  --background-light: #ffffff;
+  --background-dark: #0a0a0a;
+  --foreground-light: #171717;
+  --foreground-dark: #ffff;
+  --highlight-color: #FFD700; /* Golden color */
+}
+
+/* Apply Dark Mode Colors for Dark Mode Preferences */
+@media (prefers-color-scheme: dark) {
+  :root {
+      --background-light: #ffffff;
+      --foreground-light: #ededed;
+  }
+}
+
+/* Font Import */
+@font-face {
+  font-family: 'Dirtyline36Daysoftype2022';
+  src: url('/fonts/Dirtyline36Daysoftype2022-Reg.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Syne';
+  src: url('/fonts/Syne.ttf') format('truetype');
+  font-weight: 400; /* Regular */
+  font-style: normal;
+}
+
+/* Footer Component Styles */
+.footer-head {
+  font-family: 'Dirtyline36Daysoftype2022';
+  text-transform: lowercase;
+  font-size: 5rem;
+  text-align: center;
+  color: var(--background-dark);
+  line-height: 0.8;
+  font-weight: 100;
+}
+.dark-mode .footer-head {
+  color: var(--background-light);
+}
+.footer-container {
+  padding: 20px;
+  background-color: var(--background-light);
+  width: 80vw;
+  margin-left: 10vw;
+}
+.dark-mode .footer-container {
+  background-color: var(--background-dark);
+}
+.social-media {
+  margin: 10px 0;
+}
+
+.social-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer; /* Indicates interactivity */
+  position: relative;
+  overflow: hidden; /* Hide elements moving out */
+}
+.social-row:hover {
+  transform: scale(1.1); /* Scales the component to 110% of its size */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition effect */
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.6); /* Golden glow effect */
+}
+
+.social-heading {
+  font-size: 5rem;
+  color: #0e0e0e; /* LinkedIn color */
+  margin: 0;
+  font-family: 'poppins', serif;
+  text-transform: capitalize;
+  cursor: pointer; /* Indicates interactivity */
+  transition: transform 1s ease;
+}
+.dark-mode .social-heading {
+  color: #ffffff;
+}
+.social-heading:hover {
+  color: var(--highlight-color); /* Golden color */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.social-icon .icon {
+  width: 60px;
+  height: 60px;
+  background-color: transparent;
+  cursor: pointer; /* Indicates interactivity */
+  transition: transform 1s ease;
+}
+.social-icon .icon:hover {
+  border: 2px solid transparent;
+  border-image: linear-gradient(45deg, #FFD700, #FF8C00) 1;
+  border-radius: 50%; /* Makes the icons circular */
+  transform: scale(1.2); /* Slightly enlarge on hover */
+  transition: transform 0.3s ease, border 0.3s ease; /* Smooth border and transform effect */
+}
+
+.social-row.clicked .social-heading {
+  transform: translateX(100vw); /* Move text off-screen to the right */
+}
+.social-row.clicked .icon {
+  transform: translateX(-100vw); /* Move icon off-screen to the left */
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 20px 0;
+}
+
+/* Footer Head Hover Animation */
+.footer-head:hover {
+  color: var(--highlight-color); /* Changes to golden color */
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.7), 0 0 30px rgba(255, 215, 0, 0.5);
+  transition: color 0.3s ease, text-shadow 0.3s ease; /* Smooth transition */
+}
+
+/* Mobile view styles */
+@media (max-width: 764px) {
+  .social-heading {
+      font-size: 2rem;
+  }
+  .social-icon .icon {
+      width: 30px;
+      height: 30px;
+  }
+  .footer-head {
+      font-size: 3.5rem;
+  }
+  .social-row:hover {
+      transform: none; /* Disable scaling on smaller devices */
+  }
+  .social-heading:hover {
+      color: var(--highlight-color);
+  }
+  .footer-head:hover {
+      color: var(--highlight-color);
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+  }
+}
